@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarty's Wishlist</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <h1>Sarty's Wishlist</h1>
+        <p>Welcome to my wishlist! You don't have to buy the most expensive thing on here, or anything at all. ♥ Some items may be underlined, that means you can click on the items and you may see more details about them.</p>
+
+        <section class="shelves-container">
+            <div class="shelf" data-category="electronics">
+                <div class="shelf-display">
+                    <img src="images/shelf.png" alt="Shelf 1" class="shelf-image">
+                    <img src="images/closed-envelope.png" alt="Closed Envelope" class="closed-envelope-image">
+                </div>
+                <h2 class="shelf-title">Electronics</h2>
+            </div>
+            <div class="shelf" data-category="miscellenous">
+                <div class="shelf-display">
+                    <img src="images/shelf.png" alt="Shelf 2" class="shelf-image">
+                    <img src="images/closed-envelope.png" alt="Closed Envelope" class="closed-envelope-image">
+                </div>
+                <h2 class="shelf-title">Miscellenous</h2>
+            </div>
+            <div class="shelf" data-category="exercise">
+                <div class="shelf-display">
+                    <img src="images/shelf.png" alt="Shelf 3" class="shelf-image">
+                    <img src="images/closed-envelope.png" alt="Closed Envelope" class="closed-envelope-image">
+                </div>
+                <h2 class="shelf-title">Exercise</h2>
+            </div>
+            <div class="shelf" data-category="scents">
+                <div class="shelf-display">
+                    <img src="images/shelf.png" alt="Shelf 4" class="shelf-image">
+                    <img src="images/closed-envelope.png" alt="Closed Envelope" class="closed-envelope-image">
+                </div>
+                <h2 class="shelf-title">Scents</h2>
+            </div>
+            <div class="shelf" data-category="jewellery">
+                <div class="shelf-display">
+                    <img src="images/shelf.png" alt="Shelf 5" class="shelf-image">
+                    <img src="images/closed-envelope.png" alt="Closed Envelope" class="closed-envelope-image">
+                </div>
+                <h2 class="shelf-title">Jewellery</h2>
+            </div>
+            <div class="shelf" data-category="sewing">
+                <div class="shelf-display">
+                    <img src="images/shelf.png" alt="Shelf 6" class="shelf-image">
+                    <img src="images/closed-envelope.png" alt="Closed Envelope" class="closed-envelope-image">
+                </div>
+                <h2 class="shelf-title">Sewing supplies</h2>
+            </div>
+            <div class="shelf" data-category="makeup">
+                <div class="shelf-display">
+                    <img src="images/shelf.png" alt="Shelf 7" class="shelf-image">
+                    <img src="images/closed-envelope.png" alt="Closed Envelope" class="closed-envelope-image">
+                </div>
+                <h2 class="shelf-title">Make Up</h2>
+            </div>
+            <div class="shelf" data-category="food">
+                <div class="shelf-display">
+                    <img src="images/shelf.png" alt="Shelf 8" class="shelf-image">
+                    <img src="images/closed-envelope.png" alt="Closed Envelope" class="closed-envelope-image">
+                </div>
+                <h2 class="shelf-title">Food</h2>
+            </div>
+        </section>
+    </main>
+    <!-- Blurred Overlay + Open Envelope + Letter Page Modal -->
+    <div class="envelope-modal" id="envelopeModal" aria-hidden="true">
+        <div class="letter-scene">
+            <button class="close-btn" id="closeModal" aria-label="Close letter">&times;</button>
+
+            <!-- The Page / Letter Card emerging from the open envelope -->
+            <article class="letter-page">
+                <h2 class="letter-title" id="letterTitle">Exercise</h2>
+                <div class="letter-divider"></div>
+                    <ul class="wishlist-items" id="wishlistItems">
+                    <!-- Populated dynamically via script.js -->
+                    </ul>
+                </article>
+
+            <!-- Your Open Envelope Image -->
+            <img src="images/open-envelope.png" alt="Open Envelope" class="open-envelope-img">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

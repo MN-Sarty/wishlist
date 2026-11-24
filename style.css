@@ -1,0 +1,251 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("images/site-background.jfif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+main {
+    min-height: 200vh; /* Temporary height so you can test scrolling */
+    padding: 40px 20px;
+}
+
+html {
+    scrollbar-width: auto;
+    scrollbar-color: #e6a6cb #f1d0e9;
+}
+
+h1 {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 100px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 20px;
+    color: #63072b;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #63072b;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Laptops and Tablets: 4 shelves side-by-side */
+.shelves-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  row-gap: 56px; /* Extra vertical space between rows */
+  align-items: start;
+}
+
+/* Anchor point for the envelope */
+.shelf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.shelf-display {
+  position: relative;
+  width: 100%;
+}
+
+.shelf-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Envelope positioned on top of the shelf */
+.closed-envelope-image {
+  position: absolute;
+  bottom: 40%;          /* Adjust % up or down so it rests right on your shelf ledge */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.25s ease;
+  max-width: 50%;       /* Adjust % to resize the envelope relative to the shelf */
+  width: 50%;           /* Adjust % to resize the envelope relative to the shelf */
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+.shelf:hover .closed-envelope-image {
+  transform: translateX(-50%) translateY(-4px) scale(1.02);
+}
+
+/* Shelf category label */
+.shelf-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: -30%; /* Pulls the label up over the image's empty bottom padding—tweak % as needed */
+  letter-spacing: 0.04em;
+  color: #63072b;
+  position: relative;
+  z-index: 2;
+}
+
+/* Anchor wrapper strictly around the shelf + envelope */
+.shelf-display {
+  position: relative;
+  width: 100%;
+}
+
+/* Fullscreen Blurred Backdrop */
+.envelope-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(25, 10, 18, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.envelope-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Container holding both the letter page and wide open envelope */
+.letter-scene {
+  position: relative;
+  width: min(94vw, 540px);
+  min-height: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* Anchors both toward the bottom so the envelope's bottom shows */
+  padding-bottom: 36px;      /* Creates space below the card so the bottom of the envelope is visible */
+  transform: translateY(35px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  margin-top: 32px;
+}
+
+.envelope-modal.active .letter-scene {
+  transform: translateY(35px) scale(1);
+}
+
+/* Close X Button */
+.close-btn {
+  position: absolute;
+  top: -12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(99, 7, 43, 0.25);
+  background: #fdf9f6;
+  color: #63072b;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Paper Page Card centered over the lower/middle body of the envelope */
+.letter-page {
+  position: absolute;
+  top: 56%; /* Adjust % up/down to shift the card over the envelope pocket */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  max-height: 46vh;
+  overflow-y: auto;
+  background: #fdf9f6;
+  border: 1px solid #eadfd8;
+  border-radius: 4px 4px 12px 12px;
+  padding: 22px 20px 24px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.24);
+  z-index: 2;
+}
+
+.letter-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: #63072b;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.letter-divider {
+  width: 60px;
+  height: 1px;
+  background: rgba(99, 7, 43, 0.3);
+  margin: 0 auto 20px;
+}
+
+.wishlist-items {
+  list-style: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: #63072b;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wishlist-items a {
+  color: #63072b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wishlist-items li {
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(99, 7, 43, 0.18);
+}
+
+/* Wide Open Envelope sitting behind the page */
+.open-envelope-img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Phones: 1 shelf under the other */
+@media (max-width: 600px) {
+  .shelves-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
